@@ -1,0 +1,49 @@
+<canvas width="600" height="400"></canvas>
+
+<script>
+  window.onload = function() {
+    var tela = document.querySelector('canvas');
+    var pincel = tela.getContext('2d');
+  
+    function bandeiraBelgica(){
+      pincel.fillStyle = 'black';   
+      pincel.fillRect(0,0,200,400);
+  
+      pincel.fillStyle = 'yellow';
+      pincel.fillRect(200,0,200,400);
+  
+      pincel.fillStyle = 'red';
+      pincel.fillRect(400,0,200,400);
+    }
+
+    function bandeiraHolanda(){
+      pincel.fillStyle = 'red';
+      pincel.fillRect(0,0,600,133.33);
+
+      pincel.fillStyle = 'white';
+      pincel.fillRect(0,133.33,600,133.33);
+
+      pincel.fillStyle = 'blue';
+      pincel.fillRect(0,266.66,600,133.33);
+    }
+    function limparTela(){
+      pincel.clearRect(0,0,600,400);
+    }
+
+    var isBelgica = true;
+    bandeiraBelgica();
+    function trocarBandeira(){
+      limparTela();
+      if(isBelgica){
+        bandeiraHolanda();
+        isBelgica = false;
+      }else{
+        bandeiraBelgica();
+        isBelgica = true;
+      }
+    }
+  
+    setInterval(trocarBandeira, 3000);
+    
+  }
+</script>
